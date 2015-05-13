@@ -32,9 +32,7 @@ crop.factory('cropAreaCircle', ['$rootScope', function(CropArea, $rootScope) {
     var angleRadians=angleDegrees * (Math.PI / 180),
         circlePerimeterX=this._x + hSize * Math.cos(angleRadians),
         circlePerimeterY=this._y + hSize * Math.sin(angleRadians);
-    var coordinates = [circlePerimeterX, circlePerimeterY];
-    $rootScope.coordinates = coordinates;
-    return coordinates;
+    return [circlePerimeterX, circlePerimeterY];
   };
 
   CropAreaCircle.prototype._calcResizeIconCenterCoords=function() {

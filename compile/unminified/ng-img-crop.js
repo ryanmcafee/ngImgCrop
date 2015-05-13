@@ -1,11 +1,11 @@
 /*!
- * ngImgCrop v0.3.2
- * https://github.com/alexk111/ngImgCrop
+ * ngImgCrop v1.0.0
+ * https://github.com/ryanmcafee/ngImgCrop.git
  *
- * Copyright (c) 2015 Alex Kaul
+ * Copyright (c) 2015 Ryan McAfee
  * License: MIT
  *
- * Generated at Wednesday, May 13th, 2015, 12:48:02 PM
+ * Generated at Wednesday, May 13th, 2015, 1:35:30 PM
  */
 (function() {
 'use strict';
@@ -44,9 +44,7 @@ crop.factory('cropAreaCircle', ['$rootScope', function(CropArea, $rootScope) {
     var angleRadians=angleDegrees * (Math.PI / 180),
         circlePerimeterX=this._x + hSize * Math.cos(angleRadians),
         circlePerimeterY=this._y + hSize * Math.sin(angleRadians);
-    var coordinates = [circlePerimeterX, circlePerimeterY];
-    $rootScope.coordinates = coordinates;
-    return coordinates;
+    return [circlePerimeterX, circlePerimeterY];
   };
 
   CropAreaCircle.prototype._calcResizeIconCenterCoords=function() {
