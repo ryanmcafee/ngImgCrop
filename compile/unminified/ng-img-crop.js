@@ -2,17 +2,17 @@
  * ngImgCrop v0.3.2
  * https://github.com/alexk111/ngImgCrop
  *
- * Copyright (c) 2014 Alex Kaul
+ * Copyright (c) 2015 Alex Kaul
  * License: MIT
  *
- * Generated at Wednesday, December 3rd, 2014, 3:54:12 PM
+ * Generated at Wednesday, May 13th, 2015, 12:48:02 PM
  */
 (function() {
 'use strict';
 
 var crop = angular.module('ngImgCrop', []);
 
-crop.factory('cropAreaCircle', ['cropArea', function(CropArea) {
+crop.factory('cropAreaCircle', ['$rootScope', function(CropArea, $rootScope) {
   var CropAreaCircle = function() {
     CropArea.apply(this, arguments);
 
@@ -44,7 +44,9 @@ crop.factory('cropAreaCircle', ['cropArea', function(CropArea) {
     var angleRadians=angleDegrees * (Math.PI / 180),
         circlePerimeterX=this._x + hSize * Math.cos(angleRadians),
         circlePerimeterY=this._y + hSize * Math.sin(angleRadians);
-    return [circlePerimeterX, circlePerimeterY];
+    var coordinates = [circlePerimeterX, circlePerimeterY];
+    $rootScope.coordinates = coordinates;
+    return coordinates;
   };
 
   CropAreaCircle.prototype._calcResizeIconCenterCoords=function() {
@@ -163,7 +165,7 @@ crop.factory('cropAreaCircle', ['cropArea', function(CropArea) {
 
 
 
-crop.factory('cropAreaSquare', ['cropArea', function(CropArea) {
+crop.factory('cropAreaSquare', ['cropArea', '$rootScope', function(CropArea, $rootScope) {
   var CropAreaSquare = function() {
     CropArea.apply(this, arguments);
 
@@ -202,12 +204,14 @@ crop.factory('cropAreaSquare', ['cropArea', function(CropArea) {
 
   CropAreaSquare.prototype._calcSquareDimensions=function() {
     var hSize=this._size/2;
-    return {
+    var dimensions = {
       left: this._x-hSize,
       top: this._y-hSize,
       right: this._x+hSize,
       bottom: this._y+hSize
     };
+      $rootScope.dimensions = dimensions;
+      return dimensions;
   };
 
   CropAreaSquare.prototype._isCoordWithinArea=function(coord) {

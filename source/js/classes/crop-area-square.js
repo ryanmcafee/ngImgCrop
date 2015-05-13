@@ -1,6 +1,6 @@
 'use strict';
 
-crop.factory('cropAreaSquare', ['cropArea', function(CropArea) {
+crop.factory('cropAreaSquare', ['cropArea', '$rootScope', function(CropArea, $rootScope) {
   var CropAreaSquare = function() {
     CropArea.apply(this, arguments);
 
@@ -39,12 +39,14 @@ crop.factory('cropAreaSquare', ['cropArea', function(CropArea) {
 
   CropAreaSquare.prototype._calcSquareDimensions=function() {
     var hSize=this._size/2;
-    return {
+    var dimensions = {
       left: this._x-hSize,
       top: this._y-hSize,
       right: this._x+hSize,
       bottom: this._y+hSize
     };
+      $rootScope.dimensions = dimensions;
+      return dimensions;
   };
 
   CropAreaSquare.prototype._isCoordWithinArea=function(coord) {

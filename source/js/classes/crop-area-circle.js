@@ -1,6 +1,6 @@
 'use strict';
 
-crop.factory('cropAreaCircle', ['cropArea', function(CropArea) {
+crop.factory('cropAreaCircle', ['$rootScope', function(CropArea, $rootScope) {
   var CropAreaCircle = function() {
     CropArea.apply(this, arguments);
 
@@ -32,7 +32,9 @@ crop.factory('cropAreaCircle', ['cropArea', function(CropArea) {
     var angleRadians=angleDegrees * (Math.PI / 180),
         circlePerimeterX=this._x + hSize * Math.cos(angleRadians),
         circlePerimeterY=this._y + hSize * Math.sin(angleRadians);
-    return [circlePerimeterX, circlePerimeterY];
+    var coordinates = [circlePerimeterX, circlePerimeterY];
+    $rootScope.coordinates = coordinates;
+    return coordinates;
   };
 
   CropAreaCircle.prototype._calcResizeIconCenterCoords=function() {
