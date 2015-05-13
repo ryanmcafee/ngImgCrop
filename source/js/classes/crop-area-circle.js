@@ -1,6 +1,6 @@
 'use strict';
 
-crop.factory('cropAreaCircle', ['$rootScope', function(CropArea, $rootScope) {
+crop.factory('cropAreaCircle', ['cropArea', function(CropArea) {
   var CropAreaCircle = function() {
     CropArea.apply(this, arguments);
 

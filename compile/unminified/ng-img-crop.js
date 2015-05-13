@@ -5,14 +5,14 @@
  * Copyright (c) 2015 Ryan McAfee
  * License: MIT
  *
- * Generated at Wednesday, May 13th, 2015, 1:35:30 PM
+ * Generated at Wednesday, May 13th, 2015, 3:57:10 PM
  */
 (function() {
 'use strict';
 
 var crop = angular.module('ngImgCrop', []);
 
-crop.factory('cropAreaCircle', ['$rootScope', function(CropArea, $rootScope) {
+crop.factory('cropAreaCircle', ['cropArea', function(CropArea) {
   var CropAreaCircle = function() {
     CropArea.apply(this, arguments);
 
